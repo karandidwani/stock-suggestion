@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Performance Trend</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/static/css/boot.css">
+    <style>
+     body {
+        background-color: #FFFFF0;
+        opacity: 100.0;
+        filter: alpha(opacity=20);
+        background-image: url("/static/img/im.jpg");
+        background-size: 150% 150%;
+        background-blend-mode: normal;
+        padding-top: 90px;
+      }
+      </style>
+
+    <script type="text/javascript">
+            /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }</script>
+
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <style type="text/css">
+#container, #sliders {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#container {
+    height: 400px;
+}
+    </style>
+
+</head>
+
+<script type="text/javascript">
+
+var dayData= {{dayData|safe}};
+
+var dayCount=[]
+
+for(var j=0; j<dayData.length; j++) {
+  dayCount.push(Number(dayData[j]))
+}
+
+console.log(dayCount);
+
+
+</script>
+
+<script type="text/javascript">
+$(function () {
+    Highcharts.chart('container', {
+        title: {
+            text: 'Portfolio Value'
+        },
+        xAxis: {
+            categories: ['Day 1', 'Day 2', 'Day 3', 'Yesterday', 'Today']
+        },
+        labels: {
+            items: [{
+                html: 'Total Portfolio Value',
+                style: {
+                    left: '50px',
+                    top: '18px',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                }
+            }]
+        },
+        credits: {
+    enabled: false
+  },
+        series: [{
+            type: 'column',
+            name: 'Portfolio Value',
+            data: dayCount
+        }, {
+            type: 'spline',
+            name: 'Trend',
+            data: dayCount,
+            marker: {
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[3],
+                fillColor: 'white'
+            }
+        }]
+    });
+});
+
+
+    </script>
+
+
+    <script type="text/javascript">
+var stock_name = {{ name | safe }};
+var stock_count = {{ count | safe }};
+
+var sName=[]
+var sCount=[]
+
+for(var i=0; i<stock_count.length; i++) {
+  sName.push(stock_name[i])
+  sCount.push(stock_count[i])
+}
+console.log(sCount)
+console.log(sName)
+
+$(function () {
+
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Investment breakdown'
+        },
+
+        credits: {
+    enabled: false
+  },
+        xAxis: {
+            categories: sName
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Number of Stocks',
+            color:(Highcharts.theme && Highcharts.theme.textColor) || 'green',
+            data: sCount
+        }]
+    });
+});
+    </script>
+<body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+
+  <div class="">
+        <div class="container-fluid">
+    
+              <a href="#" class="text-center">
+<!--                 <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div> -->
+                <h2><center><font color="#59B2E0">Stock Portfolio Suggestion Engine</font></center>
+                </div>
+              </a>
+            </div>
+    
+      </div>
+
+
+
+<div class="container-fluid">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <h3><b style="color:#002366">Portfolio of {{username}}</b></h3>
+  </div>
+</div>
+<div class="row">
+        <div class="col-md-6">
+                <h4>
+                        Invested Amount = {{investedAm}}
+                        </h4>
+            </div>
+            <div class="col-md-6" style="float:left">
+                    <h4>Current Profit/Loss = {{current_value}}
+                </h4>
+                </div>
+</div>
+
+
+
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="chart"><div id="container"></div></div>
+    </div>
+  </div>
+
+  <div class="col-md-6 gutter-fix">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="chart"><div id="container2"></div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

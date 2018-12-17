@@ -1,0 +1,676 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Performance Trend</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/static/css/boot.css">
+    <style>
+     body {
+        background-color: #FFFFF0;
+        opacity: 100.0;
+        filter: alpha(opacity=20);
+        background-image: url("/static/img/im.jpg");
+        background-size: 150% 150%;
+        background-blend-mode: normal;
+/*         padding-top: 90px; */
+      }
+      </style>
+
+    <script type="text/javascript">
+            /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }</script>
+
+
+
+
+
+
+    <style type="text/css">
+#container, #sliders {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#container {
+    height: 400px;
+}
+
+
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+
+.legend .superawesome { background-color: #0000FF; }
+.legend .awesome { background-color: #000000; }
+.legend .kindaawesome { background-color: #008000; }
+.legend .notawesome { background-color: #FFA500; }
+.legend .purpleawesome { background-color: #800080; }
+
+    </style>
+
+</head>
+
+<script type="text/javascript">
+
+var appl_stock={{appl_stock |safe}};
+
+var appl_val={{ appl_val | safe}};
+
+var apprice=[]
+var appDate=[]
+
+
+
+
+for (var i = 0; i < appl_val.length; i++)
+        {
+            apprice.push(Number(appl_val[i]))
+            appDate.push(appl_stock[i])
+
+        }
+
+console.log(appDate)
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var makegraph = function () {
+  alert("Inside blur");
+  if ($("#stockname22").is(":checked")){
+        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=goog-c.json&callback=?', function (data) {
+
+        Highcharts.chart('container', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'Stock'
+            },
+
+
+        credits: {
+    enabled: false
+  },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                categories:appDate
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+
+              series:{
+                turboThreshold:10000//set it to a larger threshold, it is by default to 1000
+            },
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: 'Stocks',
+                data: apprice
+            }]
+        });
+    });
+
+
+
+  }
+
+};
+
+function graphFunc (){
+  //alert("Inside blur22");
+  if ($("#stockname22").val() == "goog" || $("#stockname22").val() == "GOOG"){
+        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=goog-c.json&callback=?', function (data) {
+
+        Highcharts.chart('container', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'Google Stock Prices'
+            },
+
+
+        credits: {
+    enabled: false
+  },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                categories:appDate
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+
+              series:{
+                turboThreshold:10000//set it to a larger threshold, it is by default to 1000
+            },
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: 'Stocks',
+                data: apprice
+            }]
+        });
+    });
+
+
+
+  }
+  else if ($("#stockname22").val() == "aapl" || $("#stockname22").val() == "AAPL"){
+        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+
+        Highcharts.chart('container', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'Apple Stock Prices'
+            },
+
+
+        credits: {
+    enabled: false
+  },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                categories:appDate
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+
+              series:{
+                turboThreshold:10000//set it to a larger threshold, it is by default to 1000
+            },
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: 'Stocks',
+                data: apprice
+            }]
+        });
+    });
+
+
+
+  }
+   else if ($("#stockname22").val() == "adbe" || $("#stockname22").val() == "ADBE"){
+        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function (data) {
+
+        Highcharts.chart('container', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'Adobe Stock Prices'
+            },
+
+
+        credits: {
+    enabled: false
+  },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                categories:appDate
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+
+              series:{
+                turboThreshold:10000//set it to a larger threshold, it is by default to 1000
+            },
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area',
+                name: 'Stocks',
+                data: apprice
+            }]
+        });
+    });
+
+
+
+  }
+
+}
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+var ethi_stock={{ethi_stock |safe}};
+
+
+var ethi_num={{ ethi_num | safe}};
+
+var grow_stock={{ grow_stock | safe}};
+var grow_num={{ grow_num | safe}};
+
+var ind_stock={{ ind_stock | safe}};
+var ind_num={{ ind_num | safe}};
+
+var qua_stock={{ qua_stock | safe}};
+var qua_num={{ qua_num | safe}};
+
+var val_stock={{ val_stock | safe}};
+var val_num={{ val_num | safe}};
+
+
+
+var cata=[]
+var catb=[]
+var catc=[]
+var catd=[]
+var cate=[]
+
+var dataa=[]
+var datab=[]
+var datac=[]
+var datad=[]
+var datae=[]
+
+for (var i = 0; i < ethi_stock.length; i++)
+        {
+            cata.push(ethi_stock[i])
+            dataa.push(Number(ethi_num[i]))
+        }
+
+for (var i = 0; i < grow_stock.length; i++)
+        {
+            catb.push(grow_stock[i])
+            datab.push(Number(grow_num[i]))
+        }
+
+for (var i = 0; i < ind_stock.length; i++)
+        {
+            catc.push(ind_stock[i])
+            datac.push(Number(ind_num[i]))
+        }
+
+for (var i = 0; i < qua_stock.length; i++)
+        {
+            catd.push(qua_stock[i])
+            datad.push(Number(qua_num[i]))
+        }
+
+for (var i = 0; i < val_stock.length; i++)
+        {
+            cate.push(val_stock[i])
+            datae.push(Number(val_num[i]))
+        }
+console.log(dataa)
+
+
+
+</script>
+
+<style>
+
+#container1 {
+    height: 400px;
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+</style>
+
+    <script type="text/javascript">
+$(function () {
+Highcharts.chart('container2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+
+        title: {
+            text: 'Investment Strategy Distrubtion'
+        },
+
+
+
+        credits: {
+    enabled: false
+  },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        categories: cata,
+        series: [{
+            name: 'Stocks',
+            data: datab
+        }]
+    });
+
+
+    $(".test").change(function() {
+
+      var chart = $('#container2').highcharts();
+      value = this.getAttribute("value");
+      console.log("value", value);
+        while (chart.series.length > 0) {
+            chart.series[0].remove(true);
+        }
+        if ($(this).val() == 'a') {
+             chart.addSeries({
+            name: 'Stocks',
+            data: dataa
+        } );
+
+         }
+         else if ($(this).val() == 'b') {
+                       chart.addSeries({
+            name: 'Stocks',
+            data: datab
+        } );
+          }
+            else if ($(this).val() == 'c') {
+                           chart.addSeries({
+            name: 'Stocks',
+            data: datac
+        } );
+
+        }
+else if ($(this).val() == 'd') {chart.addSeries({
+            name: 'Stocks',
+            data: datad
+        } );
+
+          }
+          else if ($(this).val() == 'e') {chart.addSeries({
+            name: 'Stocks',
+            data: datae
+        } );
+
+          }
+
+});
+});
+
+    </script>
+
+
+<body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--HEADER OPEN-->
+    <div class="">
+            <div class="container-fluid">
+        
+                  <a href="#" class="text-center">
+<!--                     <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div> -->
+                    <h2><center><font color="#59B2E0">Stock Portfolio Suggestion Engine</font></center>
+                    </div>
+                  </a>
+                </div>
+        
+          </div>
+    <!--HEADER CLOSED-->
+<div class="container-fluid">
+  <div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <h4><b style="color:#002366;font-family:'Tajawal';" text-align="center">Stock Market & Strategy</b></h4>
+                <div align="" style="margin-top:20px;">
+                    <input type="text" name="g" style="height:35px;padding: 15px" class="w3-white w3-border w3-round-large" id="stockname22"></input>
+                    <input type="submit" class="w3-btn w3-white w3-border w3-round-large" name="g" value="Get Stocks" onclick="return graphFunc();"></input>
+                </div>
+
+        </div>
+        <div class="col-md-4">
+            <h4><b style="color:#002366;font-family:'Tajawal';" text-align="">Stock Strategies</b></h4>
+            <div align="" style="margin-top:20px;">
+                    <select style="height:35px;padding: 5px" class="test w3-white w3-border w3-round-large" name="cars">
+                        <option  value="a" selected>Ethical Investing</option>
+                        <option  value="b">Growth Investing</option>
+                        <option  value="c">Index Investing</option>
+                        <option  value="d">Quality Investing</option>
+                        <option  value="e">Value Investing</option>
+                    </select>
+                </div>    
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+                <div class="chart" style="margin-left: -55px;margin-top: 20px;">
+                        <div id="container"></div>
+                    </div>
+                    
+        </div>
+        <div class="col-md-4">
+                <div class="chart" style="margin-top: 20px;"><div id="container2"></div></div>
+                <table class="legend" style="font-size:10px;">
+                    <tr>
+                        <td>
+                            <span class="superawesome"></span> {{ethi_stock.0}}, {{grow_stock.0}}, {{ind_stock.0}}, {{qua_stock.0}}, {{val_stock.0}}</li>      
+                        </td>
+                        <td>
+                                <span class="awesome" style="float:left"></span> {{ethi_stock.1}}, {{grow_stock.1}}, {{ind_stock.1}}, {{qua_stock.1}}, {{val_stock.1}}</li>
+                        </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                    <li><span class="kindaawesome"></span> {{ethi_stock.2}}, {{grow_stock.2}}, {{ind_stock.2}}, {{qua_stock.2}}, {{val_stock.2}}</li>
+                            </td>
+                            <td>
+                                    <li><span class="notawesome"></span>{{ethi_stock.3}}, {{grow_stock.3}}, {{ind_stock.3}}, {{qua_stock.3}}, {{val_stock.3}}</li>
+                            </td>
+                        </tr>
+                        <tr>
+                                <td>
+                                        <li><span class="purpleawesome"></span>{{ethi_stock.4}}, {{grow_stock.4}},{{ind_stock.4}} {{qua_stock.4}} {{val_stock.4}}</li>
+                                </td>
+                            </tr>
+                </table>
+            </div>
+    </div>
+</div>
+<!-- Content closed -->
+</div>
+</body>
+</html>

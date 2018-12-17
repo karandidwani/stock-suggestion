@@ -1,0 +1,106 @@
+<body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+
+  <div class="header">
+    <div class="container-fluid">
+
+          <a href="#" class="text-center">
+            <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div>
+            <div class="text-center"><center>Stock Engine</center>
+            </div>
+          </a>
+        </div>
+
+  </div>
+
+
+
+<div class="container-fluid">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <h3><b style="color:#008000" text-align="center">STOCK MARKET & STRATEGY2</b>
+        <div align="center">
+          STOCKS:
+
+          <input type="text" name="g" id="stockname22"></input>
+          <input type="submit" name="g" value="Get Stocks" onclick="return graphFunc();"></input>
+          <!-- <input type="radio" name="g" class="test1" id="stockname22" value="a">Google</input>
+          <input type="radio" name="g" class="test1" id="stockname23" value="b">Apple</input>
+          <input type="radio" name="g" class="test1" id="stockname24" value="c">Adobe</input>
+ -->
+ <!-- <input class="test1" name="g" type="radio" value="a">Apple</input>
+          <input class="test1" name="g" type="radio" value="b" >Emcor Group Inc</input>
+          <input class="test1" name="g" type="radio" value="c">FedEx</input>
+          <input class="test1" name="g" type="radio" value="d">NetFlix</input>
+          <input class="test1" name="g" type="radio" value="e">Sports Network</input> -->
+          <br><br>
+        STRATEGIES:
+
+          <input class="test" name="g" type="radio" value="a">Ethical Investing</input>
+          <input class="test" name="g" type="radio" value="b" >Growth Investing</input>
+          <input class="test" name="g" type="radio" value="c">Index Investing</input>
+          <input class="test" name="g" type="radio" value="d">Quality Investing</input>
+          <input class="test" name="g" type="radio" value="e">Value Investing</input>
+        </div>
+        </h3>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="chart"><div id="container"></div></div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="chart"><div id="container2"></div></div>
+    </div>
+  </div>
+
+ <div class="row" align="right">
+  <div class="chart" style="color:#0000FF">BLUE: {{ethi_stock.0}}, {{grow_stock.0}}, {{ind_stock.0}}, {{qua_stock.0}}, {{val_stock.0}}</div>
+  <div class="chart" style="color:#000000">BLACK: {{ethi_stock.1}}, {{grow_stock.1}}, {{ind_stock.1}}, {{qua_stock.1}}, {{val_stock.1}}</div>
+  <div class="chart" style="color:#008000">GREEN: {{ethi_stock.2}}, {{grow_stock.2}}, {{ind_stock.2}}, {{qua_stock.2}}, {{val_stock.2}}</div>
+  <div class="chart" style="color:#FFA500">ORANGE: {{ethi_stock.3}}, {{grow_stock.3}}, {{ind_stock.3}}, {{qua_stock.3}}, {{val_stock.3}}</div>
+  <div class="chart" style="color:#800080">PURPLE: {{ethi_stock.4}}, {{grow_stock.4}},{{ind_stock.4}} {{qua_stock.4}} {{val_stock.4}}</div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+  $(window).on('resize',function() {
+     var docHeight = $(window).height();
+     var footerHeight = $('#footer').height();
+     var footerTop = $('#footer').position().top + footerHeight;
+
+     if (footerTop < docHeight) {
+      $('#footer').css('margin-top', -30 + (docHeight - footerTop) + 'px');
+     }
+    });
+    $(document).ready(function() {
+        $(window).trigger('resize');
+    });
+</script>

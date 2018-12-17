@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Portfolio</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="/static/css/boot.css">
+  </head>
+  <style>
+
+
+body {
+  background-color: #FFFFF0;
+        opacity: 100.0;
+        filter: alpha(opacity=20);
+        background-image: url("/static/img/im.jpg");
+        background-size: 150% 150%;
+        background-blend-mode: normal;
+        padding-top: 90px;
+}
+
+form {
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+  </style>
+
+<body>
+    <div class="">
+        <div class="container-fluid">
+    
+              <a href="#" class="text-center">
+<!--                 <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div> -->
+                <h2><center><font color="#59B2E0">Stock Portfolio Suggestion Engine</font></center>
+                </div>
+              </a>
+            </div>
+    
+      </div>
+{% if error == "" %}
+
+<h1>Profit Breakdown</h1>
+<h1>Profit Report: </h1>
+
+<p>
+Proceeds<br>
+{{proceeds}}
+<br>
+<br>
+Cost<br>
+{{cost}}
+<br>
+<br>
+Cost details:<br>
+Total Purchase Price<br>
+{{purch_price}}
+<br>
+Buy Commission = {{buy_comm}}
+<br>
+Sell Commission = {{sell_comm}}
+<br>
+Tac on Capital Gain = {{tax_on_capital_gain}}
+<br>
+<br>
+Net Profit<br>
+{{net_profit}}
+<br>
+<br>
+Return on Investment<br>
+{{return_investment}}
+<br>
+<br>
+To break even, you should have a final share price of<br>
+{{final_share_price}}
+<br>
+<a href="/" align="center">Go Back</a>
+{% elif error != "" %}
+<br>
+<br>
+<h2 align="center">Your stock has been entered into your portfolio.</h2>
+<!-- <a href="/" align="center">Go Back</a> -->
+{% endif %}
+</body>
+</html>

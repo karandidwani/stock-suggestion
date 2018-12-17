@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Stock Engine</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/static/css/boot.css">
+<link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <style>
+     body {
+        background-color: #FFFFF0;
+        opacity: 100.0;
+        filter: alpha(opacity=20);
+        background-image: url("/static/img/im.jpg");
+        background-size: 150% 150%;
+        background-blend-mode: normal;
+        padding-top: 90px;
+      }
+      </style>
+
+  <!-- Bootstrap -->
+
+</head>
+
+<body>
+    <div class="">
+        <div class="container-fluid">
+
+              <a href="login?loginname=Karan&loginpassword=k&submit=Log+In" class="text-center">
+<!--                 <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div> -->
+                <h2><center><font color="#59B2E0">Stock Portfolio Suggestion Engine</font></center>
+                </div>
+              </a>
+            </div>
+
+      </div>
+
+
+
+
+<div class="container"  style=" width: 1400px;" >
+  <div class="content"   >
+
+    <div class="row">
+      <div class="col-md-12" >
+        <h3><b style="color:#002366;font-family:'Tajawal';"><b>Welcome, {{username}}</b></h3>
+  </div>
+    <div class="selection center-block" >
+      <div class="row">
+
+
+         <div class="w3-container col-sm-4" >
+   <div class="w3-card-4" style="width:90%">
+    <header class="w3-container w3-light-grey">
+      <h3 class="text-center" style="color:#002366;font-family:'Tajawal';">Portfolio Performance</h3>
+    </header>
+    <a href="/portfolio?username={{username}}">
+      <button class="w3-button w3-block w3-dark-grey">+ Show Performance</button></a>
+  </div>
+</div>
+
+
+           <div class="w3-container col-sm-4" >
+   <div class="w3-card-4" style="width:90%">
+    <header class="w3-container w3-light-grey">
+      <h3 class="text-center" style="color:#002366;font-family:'Tajawal';">Market Performance</h3>
+    </header>
+    <a href="/market">
+      <button class="w3-button w3-block w3-dark-grey">+ Show Performance</button></a>
+  </div>
+</div>
+
+
+
+           <div class="w3-container col-sm-4" >
+   <div class="w3-card-4" style="width:90%">
+    <header class="w3-container w3-light-grey">
+      <h3 class="text-center" style="color:#002366;font-family:'Tajawal';">Invest in Stocks</h3>
+    </header>
+    <a  href="/invest?username={{username}}">
+      <button class="w3-button w3-block w3-dark-grey">+ Invest</button></a>
+  </div>
+</div>
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+</div>
+  </div>
+
+
+<script>
+$(window).on('resize',function() {
+     var docHeight = $(window).height();
+     var footerHeight = $('#footer').height();
+     var footerTop = $('#footer').position().top + footerHeight;
+
+     if (footerTop < docHeight) {
+      $('#footer').css('margin-top', -30 + (docHeight - footerTop) + 'px');
+     }
+    });
+    $(document).ready(function() {
+        $(window).trigger('resize');
+    });
+</script>
+
+</body>
+</html>

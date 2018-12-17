@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Portfolio</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="/static/css/boot.css">
+  </head>
+<body>
+  <style>
+	body {
+        background-color: #FFFFF0;
+        opacity: 100.0;
+        filter: alpha(opacity=20);
+        background-image: url("/static/img/im.jpg");
+        background-size: 150% 150%;
+        background-blend-mode: normal;
+        padding-top: 90px;
+      }
+  *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+
+form {
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #9EB9D4;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"]{
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 10px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #fffff0;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 20px;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+@media screen and (min-width: 400px) {
+  form {
+    max-width: 400px;
+  }
+}
+  </style>
+<div class="">
+    <div class="container-fluid">
+
+          <a href="#" class="text-center">
+<!--             <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div> -->
+            <h2><center><font color="#59B2E0">Stock Portfolio Suggestion Engine</font></center>
+            </div>
+          </a>
+        </div>
+
+  </div>
+
+<br/>
+<h1 style="color:#002366;font-family:'Tajawal';" align="center">Stock Allotment</h1>
+<h4 align="right"></h4>
+<form action="/adddata?username={{username}}" method="POST">
+
+<fieldset>
+<b>Investment in USD</b>
+
+<br/>
+<input type="text" name="amount">
+<br>
+<b>Choose a Stock</b>
+
+<br>
+<input type="text" name="name">
+<br>
+
+<br/>
+{% for d in data %}
+<input type="radio" name="strategy" value="{{ d }}"> {{d}}
+<br>
+{% endfor %}
+<input type="submit" class="btn btn-primary" style="font-size: 100%" value="Submit">
+</fieldset>
+</form>
+<p>
+
+
+</p>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+</body>
+</html>

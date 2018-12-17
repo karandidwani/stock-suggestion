@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Stock Investment Engine</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/static/css/boot.css">
+  <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+     body {
+        background-color: #FFFFF0;
+        opacity: 100.0;
+        filter: alpha(opacity=20);
+        background-image: url("/static/img/im.jpg");
+        background-size: 150% 150%;
+        background-blend-mode: normal;
+        padding-top: 90px;
+      }
+    </style>
+
+  <!-- Bootstrap -->
+
+</head>
+
+
+
+<body>
+    <div class="">
+        <div class="container-fluid">
+    
+              <a href="#" class="text-center">
+<!--                 <div class="text-center"><img src="/static/img/logo.png" height="38" width="38"></div> -->
+                <h2><center><font color="#59B2E0">Stock Portfolio Suggestion Engine</font></center>
+                </div>
+              </a>
+            </div>
+    
+      </div>
+
+
+
+
+<div class="container"    style=" width: 1400px;" >
+  <div class="content"   >
+
+    <div class="row">
+      <div class="col-md-12" >
+        <h3><b style="color:#002366;font-family:'Tajawal';"><b>Welcome, {{username}}</b></h3>
+          <h3><b style="color:#002366;font-family:'Tajawal';"><b>Choose one of the investment options:</b></h3>
+  </div>
+    <div class="selection center-block" >
+      <div class="row">
+
+
+     <!--   <div class="col-sm-4">
+          <div class="row"><a href="/investstrategy?username={{username}}"><img class="center-block" src="/static/img/strategy.png" height="250" width="250"></a></div>
+          <div class="row"><h4 class="text-center"><a href="/investstrategy?username={{username}}" style="color:#0000A0;font-family:'Tajawal';" >Invest in Strategy</a></h4></div>
+        </div>
+        -->
+        <div class="w3-container col-sm-4" style="height:80%;">
+
+  <div class="w3-card-4" style="width:90%;height:50%;">
+    <header class="w3-container w3-light-grey">
+      <h3 class="text-center" style="color:#002366;font-family:'Tajawal';">Investment Strategy</h3>
+    </header>
+    <a href="/investstrategy?username={{username}}">
+      <button class="w3-button w3-block w3-dark-grey" style="color:#002366;font-family:'Tajawal';" >+ Select</button></a>
+  </div>
+</div>
+
+            <div class="w3-container col-sm-4" >
+
+  <div class="w3-card-4" style="width:90%;height:50%;">
+    <header class="w3-container w3-light-grey">
+      <h3 class="text-center" style="color:#002366;font-family:'Tajawal';">Invest in Stocks</h3>
+    </header>
+    <a href="/investstock?username={{username}}">
+      <button class="w3-button w3-block w3-dark-grey" style="color:#002366;font-family:'Tajawal';">+ Invest now</button></a>
+  </div>
+</div>
+
+            <div class="w3-container col-sm-4" >
+
+  <div class="w3-card-4" style="width:90%;height:50%;">
+    <header class="w3-container w3-light-grey">
+      <h3 class="text-center" style="color:#002366;font-family:'Tajawal';">Add pre-existing Stocks</h3>
+    </header>
+	<a href="/addstock?username={{username}}">
+      <button class="w3-button w3-block w3-dark-grey" style="color:#002366;font-family:'Tajawal';">+ Add</button></a>
+  </div>
+</div>
+
+
+      <!--  <div class="col-sm-4">
+          <div class="row center-block"><a href="/investstock?username={{username}}"><img class="center-block" src="/static/img/stock.png" height="250" width="250"><a></div>
+          <div class="row"><h4 class="text-center"><a href="/investstock?username={{username}}" style="color:#0000A0;font-family:'Tajawal';">Invest in Stocks</a></h4></div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="row center-block"><a href="/addstock?username={{username}}"><img class="center-block" src="/static/img/exist-stock.png" height="250" width="250"></a></div>
+          <div class="row"><h4 class="text-center"><a href="/addstock?username={{username}}" style="color:#0000A0;font-family:'Tajawal';">Add pre-existing Stocks</a></h4></div>
+        </div>-->
+
+
+      </div>
+  </div>
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+</div>
+  </div>
+
+</body>
+</html>
+
